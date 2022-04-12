@@ -1,0 +1,8 @@
+I"Ê<div class="col s12 switch">
+  <label>
+    Show forked projects
+    <input class="fork-switch" type="checkbox" checked="1" onchange="toggleForked()" />
+    <span class="lever"></span>
+  </label>
+</div>
+:ET
