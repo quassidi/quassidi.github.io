@@ -35,9 +35,9 @@ img: ":home-heading.jpg"
 #published: false
 ---
 
-{%- comment -%} Please delete below and place your page content here {%- endcomment -%}
+## Hello 
+My name is Daniel and I am from Costa Rica.
 
-{%- include util/auto-content-generator.liquid -%}
-{{ website_info_text_first }}
+Currently, I have been developing my skills as a data analyst also I like cyber security. 
 
-{{ website_info_text_second }}
+You will find here how I start my projects and a step by step until I finish them.
