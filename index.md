@@ -41,3 +41,16 @@ My name is Daniel and I am from Costa Rica.
 Currently, I have been developing my skills as a data analyst also I like cyber security. 
 
 You will find here how I start my projects and a step by step until I finish them.
+
+### A little background about me
+
+In 2019 i lost my job so i decided to start studying how to develop a website
+
+In 2020 with the pandemic i had some jobs as a web developer nothing fancy i develop some sites with AWS and WordPress
+
+In 2021 i had the opportunity to receive  a student scholarship from MICITT to study Cyber Security i want to work as a cyber security analyst in the future
+I decide to start studying Data analysis and enjoy it a lot
+
+In 2022 i have been improving my skills as a data analyst doing projects and i want to use those as experience for future job
+
+My next step is to keep learning 
