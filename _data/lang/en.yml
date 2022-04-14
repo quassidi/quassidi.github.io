@@ -171,10 +171,7 @@ privacy-policy:
 meta_common_description: &meta_info $site_brand is a multilingual theme generated with Jekyll and fully compatible with GitHub Pages.
 
 auto_content:
-  title: Sample post (auto generated)
   greeting: Hello!
-  text: *meta_info
-  more_info: Learn More.
   auto_generated_text: My name is Daniel and I am from Costa Rica.Currently, 
                        I have been developing my skills as a data analyst also I like cyber security.
                        You will find here how I start my projects and a step by step until I finish them.
