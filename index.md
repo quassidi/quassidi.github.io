@@ -48,9 +48,6 @@ In 2019 i lost my job so i decided to start studying how to develop a website
 
 In 2020 with the pandemic i had some jobs as a web developer nothing fancy i develop some sites with AWS and WordPress
 
-In 2021 i had the opportunity to receive  a student scholarship from MICITT to study Cyber Security i want to work as a cyber security analyst in the future
-I decide to start studying Data analysis and enjoy it a lot
+In 2021 i had the opportunity to receive  a student scholarship from MICITT to study Cyber Security 
 
-In 2022 i have been improving my skills as a data analyst doing projects and i want to use those as experience for future job
-
-My next step is to keep learning 
+In 2022 i have been improving my skills as a data analyst doing projects and i want to use those as experience for a future job
