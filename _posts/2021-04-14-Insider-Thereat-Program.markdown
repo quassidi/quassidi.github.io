@@ -16,7 +16,7 @@ img: ":post_pic1.jpg"
 comments_disable: true
 
 # publish date
-date: 2021-04-14 17:00:00 +0600
+date: 2022-04-14 17:00:00 +0600
 
 # seo
 # if not specified, date will be used.
