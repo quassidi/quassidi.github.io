@@ -32,8 +32,8 @@ contacts:
   - github: ""
   #- email: ""
   - linkedin: ""
-  #- twitter: ""
-  #- instagram: ""
+  - twitter: ""
+  - instagram: ""
   #- youtube: ""
   #- facebook: ""
 # to add more, check the _data/const/contact.yml file
