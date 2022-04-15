@@ -8,7 +8,7 @@ page_data:
     info: "My github repository."
     text_color: "white"
     # if you don't want to use background image, comment it. back_color will be activated.
-    img: ":projects-heading.jpg"
+    img: ":projectHeading.jpg"
     back_color: "lightblue"
 
   category:
@@ -21,7 +21,7 @@ page_data:
     - type: id_pandas
       project_name: "Daily Twitch Chat Report"
       project_excerpt: "Pandas"
-      img: ":project1_thumb.jpg"
+      img: ":twitch.jpg"
       img_title: "img title1"
       date: "2021-03-13"
       post: |
