@@ -11,7 +11,7 @@ category: cyber-security
 # multiple tag entries are possible
 tags: [jekyll, example post]
 # thumbnail image for post
-img: ":post_pic_Insider_Thereat_Program.jpg"
+img: ":insider_threat_program.jpg"
 # disable comments on this page
 comments_disable: true
 
