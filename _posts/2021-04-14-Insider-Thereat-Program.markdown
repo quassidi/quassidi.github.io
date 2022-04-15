@@ -9,7 +9,7 @@ title: Designing an Insider Thereat Program For the Fanancial Sector
 # multiple category is not supported
 category: cyber-security
 # multiple tag entries are possible
-tags: [jekyll, example post]
+tags: ["cyber security"]
 # thumbnail image for post
 img: ":insider_threat_program.jpg"
 # disable comments on this page
