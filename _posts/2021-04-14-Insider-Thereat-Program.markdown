@@ -11,7 +11,7 @@ category: cyber-security
 # multiple tag entries are possible
 tags: [jekyll, example post]
 # thumbnail image for post
-img: ":post_pic1.jpg"
+img: ":post_pic_Insider_Thereat_Program.jpg"
 # disable comments on this page
 comments_disable: true
 
@@ -54,6 +54,8 @@ This project were develop as a team and the members were:
 - [Breiner Monge](https://www.linkedin.com/in/breiner-monge-campos)	
 - Ronald Moreira Artavia	
 - [Daniel Méndez](https://www.linkedin.com/in/daniel-mendez-63a724b5/)	
+
+You can find this project in diferent presentations [pdf](https://drive.google.com/file/d/15RDOO_mvXTF2JXvoWe3d2hUUcLYlA2La/view?usp=sharing) [Infographic](https://drive.google.com/file/d/1EJtfo49pt9n42sxFgyHPHZXF2lo8xE_a/view?usp=sharing)
 
 **Case Study 3: Theft of Intellectual Property**
 
