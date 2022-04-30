@@ -96,6 +96,7 @@ https://id.twitch.tv/oauth2/authorize
     &redirect_uri=http://localhost
     &scope=chat%3Aread+chat%3Aedit
 ```
+Also you can change the scope for your application for more information [click here](https://dev.twitch.tv/docs/authentication/scopes)
 
 Paste that url in your browser and press enter, it going to redirect you to this page and click on authorize
 
