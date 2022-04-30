@@ -135,7 +135,7 @@ git repository:
 keywords:
 author:
 license: (ISC)
-About to write to C:\Users\Raye\Desktop\dummy\package.json:
+About to write to <Your PATH>
 
 {
   "name": "dummy",
