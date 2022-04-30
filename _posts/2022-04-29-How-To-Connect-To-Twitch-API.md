@@ -51,18 +51,18 @@ npm packages
 
 ## 1- Go to [Twitch Devs](https://dev.twitch.tv/) website loging with your twitch account 
 
-<img src="/assets/img/posts/Twitch_api/twitch_api_logging.jpg" style="margin-left: 5%" >
+<img src="https://i.imgur.com/zaEMZmD.jpg" style="margin-left: 5%" >
 
 ## 2- Authorize developer service agreement
 
-<img src="/assets/img/posts/Twitch_api/twitch_api_authorize.jpg" style="margin-left: 5%" >
+<img src="https://i.imgur.com/N4cOVdZ.jpg" style="margin-left: 5%" >
 
 ## 3- Go to [Twitch Console](https://dev.twitch.tv/console)
 
-<img src="/assets/img/posts/Twitch_api/twitch_api_console.jpg" style="margin-left: 5%" >
+<img src="https://i.imgur.com/sKNQQTH.jpg" style="margin-left: 5%" >
 
 ## 4- Click on register your application 
-<img src="/assets/img/posts/Twitch_api/twitch_api_register_your_application.jpg" style="margin-left: 5%" >
+<img src="https://i.imgur.com/L8IyxLz.jpg" style="margin-left: 5%" >
 
 ## 5- Creating The application
 
@@ -70,20 +70,20 @@ You will need to give a name to the application then for OAuth Redirect URLs i a
 but if you have public ip and and a domain you can use it as well but for this guide we are going to use localhost
 Then click on create 
 
-<img src="/assets/img/posts/Twitch_api/twitch_api_creating_the_application.jpg" style="margin-left: 5%" >
+<img src="https://i.imgur.com/A9calQJ.jpg" style="margin-left: 5%" >
 
 
-## 6- Creating The application
+## 6- Manage your application
 
 Go to [Twitch apps](https://dev.twitch.tv/console/apps) and click on manage at your application 
 
-<img src="/assets/img/posts/Twitch_api/twitch_api_creating_manage.jpg" style="margin-left: 5%" >
+<img src="https://i.imgur.com/aSnd58P.jpg" style="margin-left: 5%" >
 
 ## 7- Create new secret
 
 Click on the new secret and save where it is secure
 
-<img src="/assets/img/posts/Twitch_api/twitch_api_secret.jpg" style="margin-left: 5%" >
+<img src="https://i.imgur.com/lp4A4kf.jpg" style="margin-left: 5%" >
 
 
 ## 8- Getting the code access 
@@ -99,11 +99,11 @@ https://id.twitch.tv/oauth2/authorize
 
 Paste that url in your browser and press enter, it going to redirect you to this page and click on authorize
 
-<img src="/assets/img/posts/Twitch_api/twitch_api_app_autorization.jpg" style="margin-left: 5%" >
+<img src="https://i.imgur.com/BjPNbBr.jpg" style="margin-left: 5%" >
 
 Then it will get you to localhost in this new page you are going to see your application code save it (the code is in the url)
 
-<img src="/assets/img/posts/Twitch_api/twitch_api_app_autorization_code.jpg" style="margin-left: 5%" >
+<img src="https://i.imgur.com/r0uTJ3b.jpg" style="margin-left: 5%" >
 
 ## 9- Installed some requirements 
 
@@ -200,4 +200,4 @@ node code.js
 
 And the output of the command will be something like this 
 
-<img src="/assets/img/posts/Twitch_api/twitch_api_token.jpg" style="margin-left: 5%" >
+<img src="https://i.imgur.com/jHYpzTx.jpg" style="margin-left: 5%" >
