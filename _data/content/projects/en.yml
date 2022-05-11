@@ -40,7 +40,7 @@ page_data:
       project_name: "Dashboard on Tableau"
       project_excerpt: "Tableau"
       img: ":TABLEAU.png"
-      img_title: "img title1"
+      img_title: "Tableau_logo"
       date: "2021-05-7"
       post: |
         # yyj_project
@@ -50,7 +50,7 @@ page_data:
         
         ### An example of the report
 
-        ![such a lovely place](https://imgur.com/0q255KA)
+        ![DASHBOARD_SUPERSTORE](https://imgur.com/0q255KA)
 
            
 
