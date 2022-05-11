@@ -43,7 +43,7 @@ page_data:
       img_title: "Tableau_logo"
       date: "2021-05-7"
       post: |
-        # yyj_project
+        # Tableau Superstore Dashboard
         This is a Dashboard that i made from the database superstore
 
         this is the link for the tableau [Dashboard](https://public.tableau.com/views/superstore_16519092554010/Dashboard1?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link)
