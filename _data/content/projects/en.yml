@@ -39,7 +39,7 @@ page_data:
     - type: id_pandas
       project_name: "Dashboard on Tableau"
       project_excerpt: "Tableau"
-      img: ":TABLEAU.png"
+      img: ":tableau.jpg"
       img_title: "Tableau_logo"
       date: "2021-05-7"
       post: |
@@ -50,7 +50,7 @@ page_data:
         
         ### An example of the report
 
-        ![DASHBOARD_SUPERSTORE](https://imgur.com/0q255KA)
+        ![DASHBOARD_SUPERSTORE](https://i.imgur.com/0q255KA)
 
            
 
