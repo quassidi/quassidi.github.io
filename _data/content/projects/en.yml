@@ -39,16 +39,14 @@ page_data:
     - type: id_pandas
       project_name: "Dashboard on Tableau"
       project_excerpt: "Tableau"
-      img: ":twitch.jpg"
+      img: ":TABLEAU.png"
       img_title: "img title1"
       date: "2021-05-7"
       post: |
         # yyj_project
-        This is a daily Report that i made for the streamer [Jinnytty](https://www.twitch.tv/jinnytty)
+        This is a Dashboard that i made from the database superstore
 
-        For this project i used different tools like bash scripting and pandas 
-
-        this is the link for the github repository [yyj_project](https://github.com/quassidi/yyj_project)
+        this is the link for the tableau [Dashboard](https://public.tableau.com/views/superstore_16519092554010/Dashboard1?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link)
         
         ### An example of the report
 
