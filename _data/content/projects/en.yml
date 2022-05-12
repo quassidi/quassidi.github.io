@@ -39,7 +39,7 @@ page_data:
     - type: id_pandas
       project_name: "Dashboard on Tableau"
       project_excerpt: "Tableau"
-      img: ":tableau.jpg"
+      img: ":https://upload.wikimedia.org/wikipedia/commons/0/01/Tableau_Software_Logo_Small.png"
       img_title: "Tableau_logo"
       date: "2021-05-5"
       post: |
