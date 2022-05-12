@@ -34,7 +34,7 @@ page_data:
         
         ### An example of the report
 
-        [such a lovely place](https://cdn.discordapp.com/attachments/921280506795032606/962530492605931560/report-1.png)
+        ![such a lovely place](https://cdn.discordapp.com/attachments/921280506795032606/962530492605931560/report-1.png)
     # example
     - type: id_pandas
       project_name: "Dashboard on Tableau"
@@ -50,7 +50,7 @@ page_data:
         
         ### An example of the report
 
-        [Dashboard_tableau](https://imgur.com/0q255KA)
+        ![Dashboard_tableau](https://imgur.com/0q255KA)
 
            
 
