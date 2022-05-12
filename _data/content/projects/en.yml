@@ -24,7 +24,7 @@ page_data:
       img: ":twitch.jpg"
       img_title: "img title1"
       date: "2021-03-13"
-      post: |
+      post: 
         # yyj_project
         This is a daily Report that i made for the streamer [Jinnytty](https://www.twitch.tv/jinnytty)
 
@@ -34,7 +34,7 @@ page_data:
         
         ### An example of the report
 
-        ![such a lovely place](https://cdn.discordapp.com/attachments/921280506795032606/962530492605931560/report-1.png)
+        [such a lovely place](https://cdn.discordapp.com/attachments/921280506795032606/962530492605931560/report-1.png)
     # example
     - type: id_pandas
       project_name: "Dashboard on Tableau"
@@ -42,7 +42,7 @@ page_data:
       img: ":tableau.jpg"
       img_title: "Tableau_logo"
       date: "2021-05-7"
-      post: |
+      post: 
         # Tableau Superstore Dashboard
         This is a Dashboard that i made from the database superstore
 
@@ -50,7 +50,7 @@ page_data:
         
         ### An example of the report
 
-        ![DASHBOARD_SUPERSTORE](https://i.imgur.com/0q255KA)
+        [Dashboard_tableau](https://imgur.com/0q255KA)
 
            
 
