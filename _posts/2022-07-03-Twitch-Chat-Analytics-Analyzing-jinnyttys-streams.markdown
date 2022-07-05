@@ -240,3 +240,13 @@ Then replace the user who has two record for their name to only one
 The last step is deleting all NA values 
 
 `clean_wothoutNA = df.dropna()`
+
+## Processing the data
+
+### identifying which emotes where more used
+
+<img src="https://i.imgur.com/SRWP0kE.jpg" style="margin-left: 5%" >
+
+The outcome
+
+<img src="https://i.imgur.com/1MX67W5.jpg" style="margin-left: 5%" >
