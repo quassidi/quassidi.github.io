@@ -218,3 +218,25 @@ from jinja2 import Environment, FileSystemLoader
 read = pd.read_csv('june.txt', delimiter=',', encoding='utf8', header=None, names=["day", "time", "user", "message"])
 ```
 <img src="https://i.imgur.com/FuYn3rQ.jpg" style="margin-left: 5%" >
+
+### Summary 
+
+<img src="https://i.imgur.com/tirXLKV.jpg" style="margin-left: 5%" >
+
+## Normalizing and cleaning the data 
+
+We already did a lot of cleaning before but we need to take extra steps
+
+Because we are using two sources they record the user names different we are going to standardize the data 
+
+First all user names need to be in lowercase
+
+`df['user'] = df['user'].str.lower()`
+
+Then replace the user who has two record for their name to only one
+
+`df["user"].replace({"센트23 vincentt23":"빈센트23", "루이스와이푸 haruiswaifu":"하루이스와이푸", "雞力 winterreise1988":"愛雞力", "죠우":"코죠우"}, inplace=True)`
+
+The last step is deleting all NA values 
+
+`clean_wothoutNA = df.dropna()`
