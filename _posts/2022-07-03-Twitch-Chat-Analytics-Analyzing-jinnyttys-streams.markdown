@@ -272,3 +272,40 @@ Outcome
 Finding which day has more interactions 
 
 <img src="https://i.imgur.com/0V34vjy.jpg" style="margin-left: 5%" >
+
+### Total user per day
+
+A similar process as i did before but this time I will find how many users were in each day 
+
+<img src="https://i.imgur.com/Ixk0ivs.jpg" style="margin-left: 5%" >
+
+### Total user and messages per day graphs 
+
+
+```
+chart_messeges_per_day = plt.figure(figsize=(30,10))
+chart_messeges_per_day = plt.plot(newplot.Day, newplot.Messages, "g.-")
+chart_messeges_per_day = plt.title("Messages per day")
+chart_messeges_per_day = plt.xlabel('Days.', fontsize=18)
+chart_messeges_per_day = plt.ylabel('Messages.', fontsize=16)
+chart_messeges_per_day = plt.xticks(fontsize=12, rotation=360)
+chart_chatters_per_day = plt.yticks(fontsize=13)
+chart_messeges_per_day = plt.show()
+
+```
+
+<img src="https://i.imgur.com/Yv2ZLdw.jpg" style="margin-left: 5%" >
+
+```
+chart_chatters_per_day = plt.figure(figsize=(30,10))
+chart_chatters_per_day = plt.plot(newplot.Day, newplot.Chatters, "b.-")
+chart_chatters_per_day = plt.title("Unqiue chatters per day")
+chart_chatters_per_day = plt.xlabel('Days.', fontsize=18)
+chart_chatters_per_day = plt.ylabel('Unique chatters.', fontsize=18)
+chart_chatters_per_day = plt.xticks(fontsize=12, rotation=360)
+chart_chatters_per_day = plt.yticks(fontsize=13)
+chart_chatters_per_day = plt.show()
+```
+
+<img src="https://i.imgur.com/5uZyIED.jpg" style="margin-left: 5%" >
+
