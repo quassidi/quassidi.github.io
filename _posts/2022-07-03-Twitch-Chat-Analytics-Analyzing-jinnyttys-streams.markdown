@@ -245,8 +245,21 @@ The last step is deleting all NA values
 
 ### identifying which emotes where more used
 
+As i said before twitch community like to use emotes to express their self so it is really interesting to see which emote was used more i will do this analysis first by taking the data frame without nam values
+then take each word of each row separating them and then group each one for counting them.
+
+I will take only the first seventy words and then i apply a filter that only leaves emotes and not English words 
+
 <img src="https://i.imgur.com/SRWP0kE.jpg" style="margin-left: 5%" >
 
 The outcome
 
 <img src="https://i.imgur.com/1MX67W5.jpg" style="margin-left: 5%" >
+
+### Top chatters with their most used emote
+
+The first times i did the analysis and show to some friends they ask me which emote they use more and how many times they send a messages 
+I found that the most interested people in the analysis is usually the user who sends more messages per stream 
+
+<img src="https://i.imgur.com/oYDL9BR.jpg" style="margin-left: 5%" >
+
