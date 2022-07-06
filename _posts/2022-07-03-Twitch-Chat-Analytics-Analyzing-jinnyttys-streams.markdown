@@ -70,26 +70,36 @@ The first cleaning that i do it is done it with bash and is automated
 
 ```
 #!/bin/bash
+
 # I find every Quotation mark and delete then. i do this because a quotation mark could interfere when i am running some code in the future
 sed 's/"//g' *.txt > withoutcomillas.txt &&
+
 #  I use verticals bars as separators so this symbol could make another column when i am reading the file with pandas 
 sed 's/|//g' withoutcomillas.txt > datawithits.txt &&
+
 #  Because this analysis is about twitch and the main way to express yourself its with emotes i need to normalize all world  with apostrophe
 sed -r "s/It’s/its/g" datawithits.txt | sed -r "s/It’s/its/g" | sed -r "s/That’s/Thats/g" | sed -r "s/M&M's/MMs/g" > yyjdata.txt | sed -r "s/don't/dont/g" > yyjdata.txt &&
+
 #  Separating the data in different files will makes easy the cleaning at the end i will merge then
 awk '{print $1}' yyjdata.txt | awk '{print substr($0,2,8);}' > time.csv &&
+
 #  Separating the data in different files will makes easy the cleaning at the end i will merge then
 awk '{print $2}' yyjdata.txt | awk -F: '{print $1}' > user.csv &&
+
 #  Separating the data in different files will makes easy the cleaning and at the end i will merge then
 awk -F: '{ for(i=1; i<=3; i++){ $i="" }; print $0 }' yyjdata.txt | awk '{print substr($0, 5, length($0))}' > messages.csv &&
+
 #  Merging all the files into one
 paste -d '\|' time.csv user.csv messages.csv > readydata.txt &&
+
 #  At the start of the stream is always played an intro and some user spam and that makes 
 # the analysis biased so I need to find when the intro finished and that is easy because usually, a bot sent a message saying 
 # that scene switched to live so i find that row and everything before that it is deleted
 sed '1,/super_stream_server|Scene switched to  Live/d' readydata.txt > awkcleaning.txt  &&
+
 #  Then i deleted some rows with text strings that spawn nan values in the last column
-awk '!/just earned/ &&  !/sending messages too quickly/ && !/emote-only/ && !/You can find your currently available/ && !/raiders from/ && !/redeemed/ && !/streamelements/ && !/innytty is live!/ && !/StreamElements/`
+awk '!/just earned/ &&  !/sending messages too quickly/ && !/emote-only/ && !/You can find your currently available/ && !/raiders from/ && !/redeemed/ && !/streamelements/ && !/innytty is live!/ && !/StreamElements/
+
 # I delete the rest of the files
 rm datawithits.txt time.csv user.csv messages.csv withoutcomillas.txt yyjdata.txt readydata.txt awkcleaning.txt
 ```
@@ -102,23 +112,18 @@ import pandas as pd
 df = pd.read_csv('../yyj.csv', delimiter='|', encoding='utf8', header=None, names=["Time", "User", "Message"])
 
 # Sometimes i do the analysis the next day that the stream was streamed so i need to subtract one day
-
 df["Time"] = pd.to_datetime(df["Time"]) - + pd.Timedelta(days=1)
 
 # Here i will add the timestamp 
-
 df["Time"] = pd.to_datetime(df["Time"]) + pd.Timedelta(hours=6, minutes=3)
 
 # next i separate the date from the timestamp in one column
-
 df["Day"] = pd.to_datetime(df["Time"]).dt.strftime('%Y-%m-%d')
 
 # and then i do the same with timestamp
-
 df["Time"] = pd.to_datetime(df["Time"]).dt.strftime('%H:%M:%S')
 
 # i organize the columns and the file its ready for the analysis 
-
 df = df[["Day", "Time", "User", "Message"]]
 df.to_csv('../yyj.txt',index=False, header=False, sep='|')
 
@@ -131,63 +136,49 @@ With Chatterino the cleaning process it is similar to RechatTool although we nee
 
 ```
 
-1- merge files with date /usr/bin/merge
+# merge files with date /usr/bin/merge
+for i in find . -name "*.log" -type f; do
+    ls $i | xargs -I{} awk '{print "{}", $0}' $i
+done
 
-`for i in find . -name "*.log" -type f; do`
-`    ls $i | xargs -I{} awk '{print "{}", $0}' $i`
-`done`
+# Cleaning the ""
+sed 's/"//g' data.txt > withoutcomillas.txt &&
 
-2- Cleaning the ""
+# Cleaning the |
+sed 's/|//g' withoutcomillas.txt > datawithits.txt &&
 
-`sed 's/"//g' data.txt > withoutcomillas.txt &&`
+# Cleaning It's and it's 
+sed -r "s/It’s/its/g" datawithits.txt | sed -r "s/It’s/its/g" | sed -r "s/That’s/Thats/g" | sed -r "s/M&M's/MMs/g" > yyjdata.txt &&
 
-3- Cleaning the |
+# Clean the first column and export only the data in a new file
+awk '{print substr($1,12,10); }' yyjdata.txt > a.txt &&
 
-`sed 's/|//g' withoutcomillas.txt > datawithits.txt &&`
+# Take the column of time to another file
+awk '{print $2}' yyjdata.txt > time.txt &&
 
-4- Cleaning It's and it's 
+# Removing the 1st and last character of every line "[]" from the file time.txt then export the data to b.txt
+sed 's/.//;s/.$//' time.txt > b.txt &&
 
-`sed -r "s/It’s/its/g" datawithits.txt | sed -r "s/It’s/its/g" | sed -r "s/That’s/Thats/g" | sed -r "s/M&M's/MMs/g" > yyjdata.txt &&`
+# Deleting the last character from the third column ":"
+awk -F: '{if (NR!=0) {print substr($3, 6, length($3))}}' yyjdata.txt > c.txt &&
 
-5- Clean the first column and export only the data in a new file
+# extracting messages
+awk -F: '{ for(i=1; i<=3; i++){ $i="" }; print $0 }' yyjdata.txt > mssgs.txt &&
 
-`awk '{print substr($1,12,10); }' yyjdata.txt > a.txt &&`
+# Deleting spaces from mssgs
+awk '{print substr($0, 5, length($0))}' mssgs.txt > d.txt &&
 
-6- Take the column of time to another file
+# Merging the files a, b, and c into one file
+paste -d '\|' a.txt b.txt c.txt d.txt > readydata.txt &&
 
-`awk '{print $2}' yyjdata.txt > time.txt &&`
+# starting stream
+sed '1,/super_stream_server|Scene switched to  Live/d' readydata.txt > awkcleaning.txt &&
 
-7- Removing the 1st and last character of every line "[]" from the file time.txt then export the data to b.txt
+# search all lines that contains # and delete them
+awk '!/just earned/ &&  !/sending messages too quickly/ && !/emote-only/ && !/You can find your currently available/ && !/raiders from/ && !/redeemed/ && !/streamelements/ && !/innytty is live!/' awkcleaning.txt > yyj.txt
 
-`sed 's/.//;s/.$//' time.txt > b.txt &&`
-
-8- Deleting the last character from the third column ":"
-
-`awk -F: '{if (NR!=0) {print substr($3, 6, length($3))}}' yyjdata.txt > c.txt &&`
-
-9- extracting messages
-
-`awk -F: '{ for(i=1; i<=3; i++){ $i="" }; print $0 }' yyjdata.txt > mssgs.txt &&`
-
-10- Deleting spaces from mssgs
-
-`awk '{print substr($0, 5, length($0))}' mssgs.txt > d.txt &&`
-
-11- Merging the files a, b, and c into one file
-
-`paste -d '\|' a.txt b.txt c.txt d.txt > readydata.txt &&`
-
-12- starting stream
-
-`sed '1,/super_stream_server|Scene switched to  Live/d' readydata.txt > awkcleaning.txt &&`
-
-13- search all lines that contains # and delete them
-
-`awk '!/just earned/ &&  !/sending messages too quickly/ && !/emote-only/ && !/You can find your currently available/ && !/raiders from/ && !/redeemed/ && !/streamelements/ && !/innytty is live!/' awkcleaning.txt > yyj.txt`
-
-Removing the files a.txt b.txt c.txt d.txt
-
-`rm a.txt b.txt c.txt d.txt data.txt yyjdata.txt time.txt readydata.txt awkcleaning.txt mssgs.txt withoutcomillas.txt datawithits.txt`
+# Removing the files a.txt b.txt c.txt d.txt
+rm a.txt b.txt c.txt d.txt data.txt yyjdata.txt time.txt readydata.txt awkcleaning.txt mssgs.txt withoutcomillas.txt datawithits.txt
 
 ```
 
