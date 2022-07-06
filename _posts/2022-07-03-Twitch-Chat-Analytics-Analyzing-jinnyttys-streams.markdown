@@ -385,3 +385,100 @@ chart_chatters_per_day = plt.show()
 
 <img src="https://i.imgur.com/5uZyIED.jpg" style="margin-left: 5%" >
 
+### Finding the day and week of the stream 
+
+```
+import calendar
+calendar.setfirstweekday(6)
+
+def get_week_of_month(year, month, day):
+    x = np.array(calendar.monthcalendar(year, month))
+    week_of_month = np.where(x==day)[0][0] + 1
+    return(week_of_month)
+
+cell = [None] * int(len(newplot))
+
+d = [None] * int(len(newplot))
+for g in range(len(newplot)):
+    cell[g] = newplot.loc[g, 'Day']
+    d[g] = cell[g][8:]
+
+newplot['day'] = pd.Series(d)
+
+```
+
+```
+Week_1 = 1
+Week_2 = 5
+Week_3 = 12
+Week_4 = 19
+Week_5 = 26
+last_day = 30
+def applyFunc(s):
+    if s == Week_1 or s < Week_2:
+        return "Week 1"
+    elif s == Week_2 or s < Week_3:
+        return 'Week 2'
+    elif s == Week_3 or s < Week_4:
+        return 'Week 3'
+    elif s == Week_4 or s < Week_5:
+        return 'Week 4'
+    elif s == Week_5 or s <= last_day:
+        return 'Week 5'
+    return ''
+newplot["Day"] = pd.to_datetime(newplot["Day"])
+newplot['day_of_the_week'] = pd.Series(newplot['Day'].dt.day_name())
+newplot['day'] = newplot['day'].astype(int)
+newplot['Week'] = newplot['day'].apply(applyFunc)
+newplot["Day"] = newplot["Day"].dt.strftime('%Y-%m-%d')
+newplot.reset_index(drop='index')
+```
+
+Outcome
+<img src="https://i.imgur.com/nVXyOXh.jpg" style="margin-left: 5%" >
+
+### Heatmaps and pivot tables
+
+#### Top messages Pivot table 
+
+```
+heatmap = newplot.pivot_table(index="Week", columns="day_of_the_week", values="Messages").fillna(0)
+week_pivot = heatmap.reindex(columns=['Sunday','Monday','Tuesday', 'Wednesday','Thursday','Friday','Saturday'])
+week_pivot
+
+```
+
+<img src="https://i.imgur.com/Aq3mr6V.jpg" style="margin-left: 5%" >
+
+#### Top messages Heatmap
+
+```
+week_messeges_heatmap = plt.figure(figsize = (20,10), facecolor="w")
+week_messeges_heatmap = plt.title("Heatmap top messages")
+week_messeges_heatmap = sns.heatmap(week_pivot, annot=False, cbar_kws={'shrink': 0.9})
+week_messeges_heatmap = plt.xticks(fontsize=12, rotation=45)
+week_messeges_heatmap = plt.yticks(fontsize=15)
+```
+<img src="https://i.imgur.com/ChloaY3.jpg" style="margin-left: 5%" >
+
+#### Top users Pivot table 
+
+```
+chatters_heatmap = newplot.pivot_table(index="Week", columns="day_of_the_week", values="Chatters").fillna(0)
+chatters_heatmap = chatters_heatmap.reindex(columns=['Sunday','Monday','Tuesday', 'Wednesday','Thursday','Friday','Saturday'])
+chatters_heatmap
+
+```
+<img src="https://i.imgur.com/O6W2CGG.jpg" style="margin-left: 5%" >
+
+#### Top users Heatmap
+
+```
+week_chatters_heatmap = plt.figure(figsize = (20,10))
+week_chatters_heatmap = plt.title("Heatmap top chatters")
+week_chatters_heatmap = sns.heatmap(chatters_heatmap, annot=False)
+week_chatters_heatmap = plt.xticks(fontsize=12, rotation=45)
+week_chatters_heatmap = plt.yticks(fontsize=15)
+
+```
+<img src="https://i.imgur.com/xaHPXzb.jpg" style="margin-left: 5%" >
