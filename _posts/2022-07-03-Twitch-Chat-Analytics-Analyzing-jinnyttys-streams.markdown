@@ -285,7 +285,41 @@ The outcome
 The first times i did the analysis and show to some friends they ask me which emote they use more and how many times they send a messages 
 I found that the most interested people in the analysis is usually the user who sends more messages per stream 
 
-<img src="https://i.imgur.com/oYDL9BR.jpg" style="margin-left: 5%" >
+```
+top20Chatters = df.user.value_counts()[:20].reset_index()
+nametop_1 = [None] * 20
+Searching_by_User_top_1 = [None] * 20
+Searching_by_UserTop_1_emote = [None] * 20
+textwithoutmostusedwords_byuser1 = [None] * 20
+topemotefromtop1chatter = [None] * 20
+howManyTimesWasUsedThe_topemotefrom_top1chatter = [None] * 20
+topemotefromtop_1chatter_second_emote = [None] * 20
+howManyTimesWasUsedThe_topemotefrom_top_1chatter_second_emote = [None] * 20
+
+for m in range(20):
+    nametop_1[m] = top20Chatters.loc[m, 'index']
+    Searching_by_User_top_1[m] = df[(df["user"] == nametop_1[m]) & (df["message"] )]
+    Searching_by_UserTop_1_emote[m] = pd.Series(' '.join(Searching_by_User_top_1[m]['message']).split()).value_counts()[:50].reset_index().replace('󠀀', np.nan, regex=True).dropna(axis='rows')
+    textwithoutmostusedwords_byuser1[m] = Searching_by_UserTop_1_emote[m][Searching_by_UserTop_1_emote[m]['index'].isin(values) == False].reset_index()
+    topemotefromtop1chatter[m] = textwithoutmostusedwords_byuser1[m].loc[0, 'index']
+    howManyTimesWasUsedThe_topemotefrom_top1chatter[m] = textwithoutmostusedwords_byuser1[m].loc[0,0]
+    topemotefromtop_1chatter_second_emote[m] = textwithoutmostusedwords_byuser1[m].loc[1, 'index']
+    howManyTimesWasUsedThe_topemotefrom_top_1chatter_second_emote[m] = textwithoutmostusedwords_byuser1[m].loc[1,0]
+
+top20Chatters['Most used emote by user'] = pd.Series(topemotefromtop1chatter)
+
+top20Chatters['Times used'] = pd.Series(howManyTimesWasUsedThe_topemotefrom_top1chatter)
+
+top20Chatters['Second most used emote by user'] = pd.Series(topemotefromtop_1chatter_second_emote)
+
+top20Chatters['Total for second emote'] = pd.Series(howManyTimesWasUsedThe_topemotefrom_top_1chatter_second_emote)
+
+top20Chatters.to_csv('top20Chatters.csv', header=False, index=False,)
+top20Chatters
+
+```
+
+
 
 Outcome 
 
