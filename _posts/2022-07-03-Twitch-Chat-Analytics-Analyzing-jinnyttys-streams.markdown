@@ -263,3 +263,12 @@ I found that the most interested people in the analysis is usually the user who 
 
 <img src="https://i.imgur.com/oYDL9BR.jpg" style="margin-left: 5%" >
 
+Outcome 
+
+<img src="https://i.imgur.com/MLCGVqr.jpg" style="margin-left: 5%" >
+
+### Total messages per day
+
+Finding which day has more interactions 
+
+<img src="https://i.imgur.com/0V34vjy.jpg" style="margin-left: 5%" >
