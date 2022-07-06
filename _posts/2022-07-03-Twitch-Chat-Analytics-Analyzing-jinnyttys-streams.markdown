@@ -204,8 +204,16 @@ read = pd.read_csv('june.txt', delimiter=',', encoding='utf8', header=None, name
 <img src="https://i.imgur.com/FuYn3rQ.jpg" style="margin-left: 5%" >
 
 ### Summary 
-
+```
+df.describe()
+```
 <img src="https://i.imgur.com/tirXLKV.jpg" style="margin-left: 5%" >
+
+```
+df.info()
+```
+<img src="https://i.imgur.com/JmUWXfh.jpg" style="margin-left: 5%" >
+
 
 ## Normalizing and cleaning the data 
 
@@ -234,7 +242,39 @@ then take each word of each row separating them and then group each one for coun
 
 I will take only the first seventy words and then i apply a filter that only leaves emotes and not English words 
 
-<img src="https://i.imgur.com/SRWP0kE.jpg" style="margin-left: 5%" >
+```
+most_used_words = pd.Series(' '.join(clean_wothoutNA['message']).split()).value_counts()[:70].reset_index()
+clean1 = most_used_words.replace('󠀀', np.nan, regex=True)
+text_withoutNan = clean1.dropna(axis='rows').replace({'\'':''}, {')':''}, regex=True)
+text_withoutNan
+
+#define values
+values = ["The", "the", "it", "be", "is", "you", "a", "to", "no", "in", "that", "she", "this", "for", 
+          "not", "good", "I", "on", "and", "i", "1", "2", "Lmao", "Lol", "You", "like", "just", "its", "?", "lol", "all", "so", "will",
+          "of", "are", "they", "bye", "⠀", "yes", "he", "can", "11", "go", "him", "your", "back", "her", "D", "u", "do", "take", "need", 
+          "more", "why", "have", "what", "with", "dont", "get", "eat", "drink", "jinny", "was", "my", "we"
+          ,"nice", "too", "me", "one", "yuggie", "at", "how", "it\'s", "ye", "yea", "!bet", "hair", "milk", "🥕", "wind",
+          "S", "yeah", "ok", "mode", "water", "there", "drone", "lacari", "love", "buzz", "ass", "now", "Kofu", "kofu", "suck", "WEAR",
+          "IT!", "MMs", "Buy", "IT!WEAR", "lolz", "ur", "hahaha", "eye", "see", "SIMBA", "did", "never", "No", "Jinny", "!yc"
+          ,"lmao", "+100", "up", "bar", "hidden", "🇸🇬", "🤝", "🇲🇾", "F", "❌", "󠀀", "KOFU", "DO", "THIS", "IRL", "cunt", "YOU", "balls", "A", ".", "shoey", "us",
+          "buy", "HSP", "chat", "don\"t", "💨", "🌊","yr", "yup", "jimbo", "lul", "uh", "cool", "aw", "oh", "time", "drunk", "phone", "gone",
+          "That\'s", "IT",  "LOOKS", "ICANT", "LOCK", "AND", "YOUR", "ICANT", "if", "😃", "😂", "🤣", "well", "😆", "🙂", "👋🙂", "🤣🤣", "f","🤳"]
+
+
+#drop rows that contain any value in the list
+textwithoutmostusedwords = text_withoutNan[text_withoutNan['index'].isin(values) == False]
+
+#another way to search for most used words 
+#df.message.value_counts().reset_index()
+
+#--------------------------------------------------Saving in a document----------------------------------------------------------------
+savetextwithoutmostusedwords = textwithoutmostusedwords.to_csv("topemotes.txt", sep=' ', header=False, index=False)
+#--------------------------------------------------------------------------------------------------------------------------------------
+
+Cleanreadytop20chatters = pd.read_csv("topemotes.txt", delimiter=' ', encoding='utf8', header=None, names=["Emote", "Times Used"])
+Cleanreadytop20chatters
+
+```
 
 The outcome
 
