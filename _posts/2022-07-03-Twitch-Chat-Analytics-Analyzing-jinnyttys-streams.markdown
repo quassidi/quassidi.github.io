@@ -65,49 +65,30 @@ None of them provide data and timestamp so I'll explain who do the data for each
 ---
 ### RechatTool
 
-1- The first cleaning that i do it is done it with bash and is automated 
-
-`#!/bin/bash`
-
-2- I find every Quotation mark and delete then. i do this because a quotation mark could interfere when i am running some code in the future
-
-`sed 's/"//g' *.txt > withoutcomillas.txt &&`
-
-3- I use verticals bars as separators so this symbol could make another column when i am reading the file with pandas 
-
-`sed 's/|//g' withoutcomillas.txt > datawithits.txt &&`
-
-4- Because this analysis is about twitch and the main way to express yourself its with emotes i need to normalize all world  with apostrophe
-
-`sed -r "s/It’s/its/g" datawithits.txt | sed -r "s/It’s/its/g" | sed -r "s/That’s/Thats/g" | sed -r "s/M&M's/MMs/g" > yyjdata.txt | sed -r "s/don't/dont/g" > yyjdata.txt &&`
-
-5- Separating the data in different files will makes easy the cleaning at the end i will merge then
-
-`awk '{print $1}' yyjdata.txt | awk '{print substr($0,2,8);}' > time.csv &&`
-
-6- Separating the data in different files will makes easy the cleaning at the end i will merge then
-
-`awk '{print $2}' yyjdata.txt | awk -F: '{print $1}' > user.csv &&`
-
-7- Separating the data in different files will makes easy the cleaning and at the end i will merge then
-
-`awk -F: '{ for(i=1; i<=3; i++){ $i="" }; print $0 }' yyjdata.txt | awk '{print substr($0, 5, length($0))}' > messages.csv &&`
-
-8- Merging all the files into one
-
-`paste -d '\|' time.csv user.csv messages.csv > readydata.txt &&`
-
-9- At the start of the stream is always played an intro and some user spam and that makes the analysis biased so I need to find when the intro finished and that is easy because usually, a bot sent a message saying that scene switched to live so i find that row and everything before that it is deleted
-
-`sed '1,/super_stream_server|Scene switched to  Live/d' readydata.txt > awkcleaning.txt  &&`
-
-10- Then i deleted some rows with text strings that spawn nan values in the last column
-
-`awk '!/just earned/ &&  !/sending messages too quickly/ && !/emote-only/ && !/You can find your currently available/ && !/raiders from/ && !/redeemed/ && !/streamelements/ && !/innytty is live!/ && !/StreamElements/`
-
-11- I delete the rest of the files
-
-`rm datawithits.txt time.csv user.csv messages.csv withoutcomillas.txt yyjdata.txt readydata.txt awkcleaning.txt`
+```
+#!/bin/bash
+# 1- The first cleaning that i do it is done it with bash and is automated 
+# 2- I find every Quotation mark and delete then. i do this because a quotation mark could interfere when i am running some code in the future
+sed 's/"//g' *.txt > withoutcomillas.txt &&
+# 3- I use verticals bars as separators so this symbol could make another column when i am reading the file with pandas 
+sed 's/|//g' withoutcomillas.txt > datawithits.txt &&
+# 4- Because this analysis is about twitch and the main way to express yourself its with emotes i need to normalize all world  with apostrophe
+sed -r "s/It’s/its/g" datawithits.txt | sed -r "s/It’s/its/g" | sed -r "s/That’s/Thats/g" | sed -r "s/M&M's/MMs/g" > yyjdata.txt | sed -r "s/don't/dont/g" > yyjdata.txt &&
+# 5- Separating the data in different files will makes easy the cleaning at the end i will merge then
+awk '{print $1}' yyjdata.txt | awk '{print substr($0,2,8);}' > time.csv &&
+# 6- Separating the data in different files will makes easy the cleaning at the end i will merge then
+awk '{print $2}' yyjdata.txt | awk -F: '{print $1}' > user.csv &&
+# 7- Separating the data in different files will makes easy the cleaning and at the end i will merge then
+awk -F: '{ for(i=1; i<=3; i++){ $i="" }; print $0 }' yyjdata.txt | awk '{print substr($0, 5, length($0))}' > messages.csv &&
+# 8- Merging all the files into one
+paste -d '\|' time.csv user.csv messages.csv > readydata.txt &&
+# 9- At the start of the stream is always played an intro and some user spam and that makes the analysis biased so I need to find when the intro finished and that is easy because usually, a bot sent a message saying that scene switched to live so i find that row and everything before that it is deleted
+sed '1,/super_stream_server|Scene switched to  Live/d' readydata.txt > awkcleaning.txt  &&
+# 10- Then i deleted some rows with text strings that spawn nan values in the last column
+awk '!/just earned/ &&  !/sending messages too quickly/ && !/emote-only/ && !/You can find your currently available/ && !/raiders from/ && !/redeemed/ && !/streamelements/ && !/innytty is live!/ && !/StreamElements/`
+# 11- I delete the rest of the files
+rm datawithits.txt time.csv user.csv messages.csv withoutcomillas.txt yyjdata.txt readydata.txt awkcleaning.txt
+```
 
 **Next i open the file with pandas because we need to add the timestamp to every row**
 
