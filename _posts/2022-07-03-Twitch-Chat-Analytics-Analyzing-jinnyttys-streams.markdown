@@ -276,7 +276,7 @@ Cleanreadytop20chatters
 
 ```
 
-The outcome
+Outcome
 
 <img src="https://i.imgur.com/1MX67W5.jpg" style="margin-left: 5%" >
 
@@ -325,15 +325,33 @@ Outcome
 
 <img src="https://i.imgur.com/MLCGVqr.jpg" style="margin-left: 5%" >
 
+
 ### Total messages per day
 
 Finding which day has more interactions 
+
+```
+new_df = clean_wothoutNA.day.value_counts().reset_index()
+Total_messages_per_day = new_df.to_csv("prueba.txt", sep=' ', header=False, index=False)
+Total_messages_per_day = pd.read_csv("prueba.txt", delimiter=' ', encoding='utf8', header=None, names=["Day", "Messages"])
+Total_messages_per_day
+
+```
 
 <img src="https://i.imgur.com/0V34vjy.jpg" style="margin-left: 5%" >
 
 ### Total user per day
 
 A similar process as i did before but this time I will find how many users were in each day 
+
+```
+days_month = Total_messages_per_day["Day"].to_numpy()
+Total_users_per_day = [len(df[(df["day"] == day)].user.value_counts()) for day in days_month] 
+read_saving_prueba = Total_messages_per_day
+read_saving_prueba["Chatters"] = pd.Series(Total_users_per_day)
+newplot = read_saving_prueba.sort_values(by='Day')
+newplot
+```
 
 <img src="https://i.imgur.com/Ixk0ivs.jpg" style="margin-left: 5%" >
 
