@@ -482,3 +482,68 @@ week_chatters_heatmap = plt.yticks(fontsize=15)
 
 ```
 <img src="https://i.imgur.com/xaHPXzb.jpg" style="margin-left: 5%" >
+
+### Distribution of messages between top 5 and top 20
+
+```
+plt.rcParams['font.size'] = 15
+top_chatters_frame = pd.DataFrame({'Top Chatterns' : [notopChatter, top20withouttop5, totalTop5Chatters]}, index=[plot_index_Totalmsg, plot_index_top20, plot_index_top5])
+top_chatters_frame
+plot = top_chatters_frame.plot.pie(y='Top Chatterns', figsize=(10, 10), fontsize=10)
+plt.savefig('plot')
+
+```
+<img src="https://i.imgur.com/cgrnDj5.jpg" style="margin-left: 5%" >
+
+
+### Mean Median Mode of total of messages per user 
+
+```
+table_user_and_total_messages = df.user.value_counts()
+aaa = table_user_and_total_messages.reset_index().rename(columns={"index": "User", "user": "Total_Messeges_Per_User"})
+Messeges_Per_User = aaa["Total_Messeges_Per_User"].to_numpy()
+mean = np.mean(Messeges_Per_User)
+median = np.median(Messeges_Per_User)
+Mode = stats.mode(Messeges_Per_User)
+table_total_user_and_total_messages = len(pd.unique(df['user']))
+
+print('Total chatters =' ,table_total_user_and_total_messages)
+print('Mean =' ,mean)
+Mean_text = str('Mean ') +  str(mean)
+print('Median =' ,median)
+Median_text = str('Median ') +  str(median)
+print('Mode =' ,Mode)
+Mede_text = str('Median ') +  str(median)
+
+```
+
+Total chatters = 40122
+Mean = 72.05341342439122
+Median = 2.0
+Mode = ModeResult(mode=array([1], dtype=int64), count=array([16121]))
+
+So i discoverd that the most user only send 1 or 2 messages per stream so i decided to make a visulitation about it 
+
+### Messages sent by users (grouped by quantity)
+
+```
+df_Per_User = aaa['Total_Messeges_Per_User'].value_counts().reset_index().rename(columns={"index": "Total",})
+df_Per_User
+chart_chatters_grouped_by_quantity = plt.figure(figsize=(20,10))
+chart_chatters_grouped_by_quantity = plt.xticks(fontsize=12, rotation=90)
+chart_chatters_grouped_by_quantity = plt.yticks(fontsize=13)
+chart_chatters_grouped_by_quantity = plt.plot(df_Per_User.Total, df_Per_User.Total_Messeges_Per_User)
+chart_chatters_grouped_by_quantity = plt.title("Messages sent by users (grouped by quantity)")
+chart_chatters_grouped_by_quantity = plt.xlabel('Total of Messages.', fontsize=20)
+chart_chatters_grouped_by_quantity = plt.ylabel('Number of Users.', fontsize=20)
+
+```
+<img src="https://i.imgur.com/5bJ6Z7d.jpg" style="margin-left: 5%" >
+
+Unfortunately as you can see the graph conteins a lot of information so i decided to remove outliers and with this have better view what happen with the majority of veiwers 
+
+```
+df2 = df_Per_User[(df_Per_User["Total"] <= 10)]
+df2
+
+```
