@@ -540,7 +540,7 @@ chart_chatters_grouped_by_quantity = plt.ylabel('Number of Users.', fontsize=20)
 ```
 <img src="https://i.imgur.com/5bJ6Z7d.jpg" style="margin-left: 5%" >
 
-Unfortunately as you can see the graph conteins a lot of information so i decided to remove outliers and with this have better view what happen with the majority of veiwers 
+Unfortunately, as you can see the graph contains a lot of information so i decided to remove outliers and with this have a better view of what happened with the majority of viewers
 
 ```
 df2 = df_Per_User[(df_Per_User["Total"] <= 10)]
