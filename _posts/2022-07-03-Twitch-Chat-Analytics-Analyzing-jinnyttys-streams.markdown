@@ -353,7 +353,7 @@ newplot = read_saving_prueba.sort_values(by='Day')
 newplot
 ```
 
-<img src="https://i.imgur.com/M7vZKyP.jpg" style="margin-left: 5%" >
+<img src="https://i.imgur.com/8KCzV90.jpg" style="margin-left: 5%" >
 
 
 ### Total user and messages per day graphs 
@@ -384,7 +384,7 @@ chart_chatters_per_day = plt.yticks(fontsize=13)
 chart_chatters_per_day = plt.show()
 ```
 
-<img src="https://i.imgur.com/5uZyIED.jpg" style="margin-left: 5%" >
+<img src="https://i.imgur.com/M7vZKyP.jpg" style="margin-left: 5%" >
 
 ### Finding the day and week of the stream 
 
@@ -550,7 +550,7 @@ df2
 
 <img src="https://i.imgur.com/Y5jcqnj.jpg" style="margin-left: 5%" >
 
-Now that we have a dataset with the outliers we are going to redo the graph
+Now that we have a new dataset with the outliers we are going to redo the graph
 
 ```
 chart_chatters_grouped_by_quantity_bar = plt.figure(figsize=(12,10))
@@ -566,3 +566,40 @@ chart_chatters_grouped_by_quantity_bar = plt.savefig('msbu')
 
 <img src="https://i.imgur.com/8JavzmI.jpg" style="margin-left: 5%" >
 
+### Analysis of sentiment 
+
+```
+sentiment_df = clean_wothoutNA
+
+def sentiment_calc(text):
+    try:
+        return TextBlob(text).sentiment.polarity
+    except:
+        return None
+
+sentiment_df['sentiment'] = sentiment_df['message'].apply(sentiment_calc)
+
+sentiment_df = sentiment_df[sentiment_df.sentiment != 0]
+
+Sentiment_of_chat = sentiment_df["sentiment"].to_numpy()
+mean = np.mean(Sentiment_of_chat)
+median = np.median(Sentiment_of_chat)
+Mode = stats.mode(Sentiment_of_chat)
+
+
+print('Mean =' ,mean)
+Mean_text = str('Mean ') +  str(mean)
+print('Median =' ,median)
+Median_text = str('Median ') +  str(median)
+print('Mode =' ,Mode)
+Mede_text = str('Median ') +  str(median)
+
+boxplot_sentioment = plt.figure(figsize=(12,10))
+boxplot_sentioment= plt.boxplot(sentiment_df.sentiment)
+```
+
+Mean = 0.189543889185649
+Median = 0.25
+Mode = ModeResult(mode=array([0.5]), count=array([51712]))
+
+<img src="https://i.imgur.com/ni6XaQ0.jpg" style="margin-left: 5%" >
