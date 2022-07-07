@@ -45,20 +45,18 @@ From 2020 to 2022, Yoo traveled to and streamed live in more than 20 countries i
 
 ## Personal Motivation
 
-Twitch community it is well know as tech savvy so i decided to develop the analysis in this community because they could give me a good feedback about
-the report and coding and also jinnytty is one of my favorites streamers
+Twitch community is well known as tech-savvy so I decided to develop the analysis in this community because they could give me good feedback about the report and coding also jinnytty is one of my favorites streamers
 
 ## Business Task
 
 There isn't a business task I mainly did this project to improve my skill using pandas and their packages and the process of developing a BI analytics
 
 ## Key Stakeholders
-so i said before this is personal project but through the endeavor doing it i found some people that is interesting with it
+So i said before this is personal project but through the endeavor doing it i found some people that is interesting with it
 
 ## Preparation and first cleaning
 
-Twitch is a website focus it on streaming although they had develop their chat with the Internet Relay Chat (IRC) protocol also you can access their database with an api
-knowing that we are going to use 2 tools for getting chat logs [RechatTool](https://github.com/jdpurcell/RechatTool) and [Chatterino](https://chatterino.com/)
+Twitch is a website focused on streaming although they had developed their chat with the Internet Relay Chat (IRC) protocol also you can access their database with an API knowing that we are going to use 2 tools for getting chat logs [RechatTool](https://github.com/jdpurcell/RechatTool) and [Chatterino](https://chatterino.com/)
 
 None of them provide data and timestamp so I'll explain who do the data for each one separately.
 
