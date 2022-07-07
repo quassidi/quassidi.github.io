@@ -69,29 +69,29 @@ The first cleaning that i do it is done it with bash and is automated
 ```
 #!/bin/bash
 
-# I find every Quotation mark and delete then. i do this because a quotation mark could interfere when i am running some code in the future
+# I find every Quotation mark and delete them. I do this because a quotation mark could interfere when I am running some code in the future
 sed 's/"//g' *.txt > withoutcomillas.txt &&
 
-#  I use verticals bars as separators so this symbol could make another column when i am reading the file with pandas 
+#  I use vertical bars as separators so this symbol could make another column when i am reading the file with pandas 
 sed 's/|//g' withoutcomillas.txt > datawithits.txt &&
 
 #  Because this analysis is about twitch and the main way to express yourself its with emotes i need to normalize all world  with apostrophe
 sed -r "s/It’s/its/g" datawithits.txt | sed -r "s/It’s/its/g" | sed -r "s/That’s/Thats/g" | sed -r "s/M&M's/MMs/g" > yyjdata.txt | sed -r "s/don't/dont/g" > yyjdata.txt &&
 
-#  Separating the data in different files will makes easy the cleaning at the end i will merge then
+#  Separating the data in different files will makes easy the cleaning at the end i will merge them
 awk '{print $1}' yyjdata.txt | awk '{print substr($0,2,8);}' > time.csv &&
 
-#  Separating the data in different files will makes easy the cleaning at the end i will merge then
+#  Separating the data in different files will makes easy the cleaning at the end i will merge them
 awk '{print $2}' yyjdata.txt | awk -F: '{print $1}' > user.csv &&
 
-#  Separating the data in different files will makes easy the cleaning and at the end i will merge then
+#  Separating the data in different files will makes easy the cleaning and at the end i will merge them
 awk -F: '{ for(i=1; i<=3; i++){ $i="" }; print $0 }' yyjdata.txt | awk '{print substr($0, 5, length($0))}' > messages.csv &&
 
 #  Merging all the files into one
 paste -d '\|' time.csv user.csv messages.csv > readydata.txt &&
 
-#  At the start of the stream is always played an intro and some user spam and that makes 
-# the analysis biased so I need to find when the intro finished and that is easy because usually, a bot sent a message saying 
+#  At the start of the stream is always played an intro and some users spam and that makes 
+# the analysis biased so I need to find when the intro finish and that is easy because usually, a bot sent a message saying 
 # that scene switched to live so i find that row and everything before that it is deleted
 sed '1,/super_stream_server|Scene switched to  Live/d' readydata.txt > awkcleaning.txt  &&
 
