@@ -353,7 +353,8 @@ newplot = read_saving_prueba.sort_values(by='Day')
 newplot
 ```
 
-<img src="https://i.imgur.com/Ixk0ivs.jpg" style="margin-left: 5%" >
+<img src="https://i.imgur.com/M7vZKyP.jpg" style="margin-left: 5%" >
+
 
 ### Total user and messages per day graphs 
 
@@ -546,3 +547,22 @@ df2 = df_Per_User[(df_Per_User["Total"] <= 10)]
 df2
 
 ```
+
+<img src="https://i.imgur.com/Y5jcqnj.jpg" style="margin-left: 5%" >
+
+Now that we have a dataset with the outliers we are going to redo the graph
+
+```
+chart_chatters_grouped_by_quantity_bar = plt.figure(figsize=(12,10))
+chart_chatters_grouped_by_quantity_bar = plt.xticks(fontsize=12)
+chart_chatters_grouped_by_quantity_bar = plt.yticks(fontsize=13)
+chart_chatters_grouped_by_quantity_bar = plt.bar(df2.Total, df2.Total_Messeges_Per_User)
+chart_chatters_grouped_by_quantity_bar = plt.title("Messages sent by users (grouped by quantity)")
+chart_chatters_grouped_by_quantity_bar = plt.xlabel('Total of Messages.', fontsize=20)
+chart_chatters_grouped_by_quantity_bar = plt.ylabel('Number of Users.', fontsize=20)
+chart_chatters_grouped_by_quantity_bar = plt.xlim(1,10)
+chart_chatters_grouped_by_quantity_bar = plt.savefig('msbu')
+```
+
+<img src="https://i.imgur.com/8JavzmI.jpg" style="margin-left: 5%" >
+
