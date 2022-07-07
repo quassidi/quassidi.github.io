@@ -566,7 +566,7 @@ chart_chatters_grouped_by_quantity_bar = plt.savefig('msbu')
 
 <img src="https://i.imgur.com/8JavzmI.jpg" style="margin-left: 5%" >
 
-### Analysis of sentiment 
+### Sentiment analysis
 
 ```
 sentiment_df = clean_wothoutNA
