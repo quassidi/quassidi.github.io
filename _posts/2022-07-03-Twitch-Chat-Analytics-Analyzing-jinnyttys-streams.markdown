@@ -434,7 +434,6 @@ newplot["Day"] = newplot["Day"].dt.strftime('%Y-%m-%d')
 newplot.reset_index(drop='index')
 ```
 
-Outcome
 <img src="https://i.imgur.com/nVXyOXh.jpg" style="margin-left: 5%" >
 
 ### Heatmaps and pivot tables
@@ -493,7 +492,7 @@ plot = top_chatters_frame.plot.pie(y='Top Chatterns', figsize=(10, 10), fontsize
 plt.savefig('plot')
 
 ```
-<img src="https://i.imgur.com/cgrnDj5.jpg" style="margin-left: 5%" >
+<img src="https://i.imgur.com/cHyhy81.jpg" style="margin-left: 5%" >
 
 
 ### Mean Median Mode of total of messages per user 
