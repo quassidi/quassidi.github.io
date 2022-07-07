@@ -235,7 +235,7 @@ The last step is deleting all NA values
 
 ## Processing the data
 
-### identifying which emotes where more used
+### Identifying which emotes where more used
 
 As i said before twitch community like to use emotes to express their self so it is really interesting to see which emote was used more i will do this analysis first by taking the data frame without nam values
 then take each word of each row separating them and then group each one for counting them.
