@@ -11,7 +11,7 @@ category: cyber-security
 # multiple tag entries are possible
 tags: ["Pandas"]
 # thumbnail image for post
-img: ":insider_threat_program.jpg"
+img: ":twitch.jpg"
 # disable comments on this page
 comments_disable: true
 
@@ -45,11 +45,11 @@ From 2020 to 2022, Yoo traveled to and streamed live in more than 20 countries i
 
 ## Personal Motivation
 
-Twitch community is well known as tech-savvy so I decided to develop the analysis in this community because they could give me good feedback about the report and coding also jinnytty is one of my favorites streamers
+Twitch community is well known as tech-savvy so I decided to develop the analysis in this community because they could give me good feedback about the report and coding ain addition jinnytty is one of my favorites streamers
 
 ## Business Task
 
-There isn't a business task I mainly did this project to improve my skill using pandas and their packages and the process of developing a BI analytics
+"There isn’t a business task involve, I mainly did this project to improve my skill using pandas and their packages and the process of developing a BI analytics
 
 ## Key Stakeholders
 So i said before this is personal project but through the endeavor doing it i found some people that is interesting with it
