@@ -233,3 +233,33 @@ g = g.map( sns.distplot, "value", kde=True)
 ```
 
 <img src="https://i.imgur.com/zodaRa5.jpg" style="margin-left: 5%" >
+
+
+### Average credit limit and Age
+
+```
+limit_mean=df.groupby('AGE')['LIMIT_BAL'].mean()
+
+plt.figure(figsize=(16,8))
+plt.style.use("ggplot")
+plt.grid(True)
+plt.plot(np.arange(21,77,1),limit_mean, color="purple", alpha=0.7)
+plt.title("Average credit limit and Age", color="red", size=22)
+plt.xlabel("Age", color="black", alpha=0.8, size=16)
+plt.xlim(20,80)
+plt.show()
+```
+
+<img src="https://i.imgur.com/zhMuAUR.jpg" style="margin-left: 5%" >
+
+### Education Distribution
+
+```
+plt.figure(figsize=(12,6))
+sns.countplot(x="EDUCATION", data=df)
+plt.xticks(np.arange(7), ("graduate school" if i==1 else "university" if i==2 else "high school" if i==3 else 
+                          "other1" if i==4 else "other2" if i==5 else "other3" if i==6 else "other" for i in range(7)))
+plt.xlabel("Education", size=22, alpha=0.7)
+plt.show()
+```
+<img src="https://i.imgur.com/P67PO69.jpg" style="margin-left: 5%" >
