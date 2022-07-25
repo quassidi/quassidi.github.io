@@ -166,3 +166,28 @@ PAY_1[-2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8]
 target[0, 1]
 ```
 
+```
+plt.style.use('fivethirtyeight')
+plt.figure(figsize=(22,8))
+sns.countplot(x="target", data=df, linewidth = 1)
+plt.xticks(np.arange(2),('No', "Yes"), size = 16)
+plt.xlabel("Default Payment" , alpha=0.9, size=22)
+plt.show()
+plt.savefig('Default_Payment')
+```
+
+<img src="https://i.imgur.com/7NtkpAQ.jpg" style="margin-left: 5%" >
+
+```
+plt.subplots(figsize=(20,5))
+plt.subplot(121)
+sns.distplot(df.LIMIT_BAL)
+
+plt.subplot(122)
+sns.distplot(df.AGE)
+
+plt.show()
+```
+
+<img src="https://i.imgur.com/OdhgOYD.jpg" style="margin-left: 5%" >
+
