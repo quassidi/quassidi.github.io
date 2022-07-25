@@ -38,3 +38,153 @@ date: 2022-07-03 17:00:00 +0600
 ---
 
 # Default of Credit Card Clients Analytics and machine learning 
+
+## Personal Motivation
+
+My mean goal with this project is understand the variables that interact in a financial dataframe and how to use them to develop a machine learning model
+
+
+## Brief introduction
+
+The first steps of the project will focus on graphic illustrator on how the variable are distributed with the libraries pandas seaborn and matplotlib then i will apply some well know algorithms (Chi squared - Random forest and others) with the library scikit-learn
+
+
+### Loading dependencies 
+
+```
+import pandas as pd
+from matplotlib import dates as mpl_dates 
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd 
+import seaborn as sns
+from scipy import stats
+from textblob import TextBlob
+import scipy.stats as stats
+import math
+from datetime import datetime, timedelta 
+from jinja2 import Environment, FileSystemLoader
+
+```
+
+### Reading Data 
+
+```
+df = pd.read_csv("UCI_Credit_Card.csv")
+df = df.rename(columns={"default.payment.next.month": "target"})
+df = df.rename(columns={"PAY_0": "PAY_1"})
+df
+```
+
+<img src="https://i.imgur.com/88Ep2GP.jpg" style="margin-left: 5%" >
+
+
+```
+print(df.describe().T)
+```
+
+                 count           mean            std       min           25%  \
+ID             30000.0   15000.500000    8660.398374       1.0   7500.750000   
+LIMIT_BAL      30000.0  167484.322667  129747.661567   10000.0  50000.000000   
+SEX            30000.0       1.603733       0.489129       1.0      1.000000   
+EDUCATION      30000.0       1.853133       0.790349       0.0      1.000000   
+MARRIAGE       30000.0       1.551867       0.521970       0.0      1.000000   
+AGE            30000.0      35.485500       9.217904      21.0     28.000000   
+PAY_1          30000.0      -0.016700       1.123802      -2.0     -1.000000   
+PAY_2          30000.0      -0.133767       1.197186      -2.0     -1.000000   
+PAY_3          30000.0      -0.166200       1.196868      -2.0     -1.000000   
+PAY_4          30000.0      -0.220667       1.169139      -2.0     -1.000000   
+PAY_5          30000.0      -0.266200       1.133187      -2.0     -1.000000   
+PAY_6          30000.0      -0.291100       1.149988      -2.0     -1.000000   
+BILL_AMT1      30000.0   51223.330900   73635.860576 -165580.0   3558.750000   
+BILL_AMT2      30000.0   49179.075167   71173.768783  -69777.0   2984.750000   
+BILL_AMT3      30000.0   47013.154800   69349.387427 -157264.0   2666.250000   
+BILL_AMT4      30000.0   43262.948967   64332.856134 -170000.0   2326.750000   
+BILL_AMT5      30000.0   40311.400967   60797.155770  -81334.0   1763.000000   
+BILL_AMT6      30000.0   38871.760400   59554.107537 -339603.0   1256.000000   
+PAY_AMT1       30000.0    5663.580500   16563.280354       0.0   1000.000000   
+PAY_AMT2       30000.0    5921.163500   23040.870402       0.0    833.000000   
+PAY_AMT3       30000.0    5225.681500   17606.961470       0.0    390.000000   
+PAY_AMT4       30000.0    4826.076867   15666.159744       0.0    296.000000   
+PAY_AMT5       30000.0    4799.387633   15278.305679       0.0    252.500000   
+PAY_AMT6       30000.0    5215.502567   17777.465775       0.0    117.750000   
+target         30000.0       0.221200       0.415062       0.0      0.000000 
+
+```
+df.info()
+```
+
+RangeIndex: 30000 entries, 0 to 29999
+Data columns (total 25 columns):
+ =   Column     Non-Null Count  Dtype  
+---  ------     --------------  -----  
+ 0   ID         30000 non-null  int64  
+ 1   LIMIT_BAL  30000 non-null  float64
+ 2   SEX        30000 non-null  int64  
+ 3   EDUCATION  30000 non-null  int64  
+ 4   MARRIAGE   30000 non-null  int64  
+ 5   AGE        30000 non-null  int64  
+ 6   PAY_1      30000 non-null  int64  
+ 7   PAY_2      30000 non-null  int64  
+ 8   PAY_3      30000 non-null  int64  
+ 9   PAY_4      30000 non-null  int64  
+ 10  PAY_5      30000 non-null  int64  
+ 11  PAY_6      30000 non-null  int64  
+ 12  BILL_AMT1  30000 non-null  float64
+ 13  BILL_AMT2  30000 non-null  float64
+ 14  BILL_AMT3  30000 non-null  float64
+ 15  BILL_AMT4  30000 non-null  float64
+ 16  BILL_AMT5  30000 non-null  float64
+ 17  BILL_AMT6  30000 non-null  float64
+ 18  PAY_AMT1   30000 non-null  float64
+ 19  PAY_AMT2   30000 non-null  float64
+ 20  PAY_AMT3   30000 non-null  float64
+ 21  PAY_AMT4   30000 non-null  float64
+ 22  PAY_AMT5   30000 non-null  float64
+ 23  PAY_AMT6   30000 non-null  float64
+ 24  target     30000 non-null  int64  
+dtypes: float64(13), int64(12)
+
+```
+df.isnull().sum(axis=0)
+```
+ID           0
+LIMIT_BAL    0
+SEX          0
+EDUCATION    0
+MARRIAGE     0
+AGE          0
+PAY_1        0
+PAY_2        0
+PAY_3        0
+PAY_4        0
+PAY_5        0
+PAY_6        0
+BILL_AMT1    0
+BILL_AMT2    0
+BILL_AMT3    0
+BILL_AMT4    0
+BILL_AMT5    0
+BILL_AMT6    0
+PAY_AMT1     0
+PAY_AMT2     0
+PAY_AMT3     0
+PAY_AMT4     0
+PAY_AMT5     0
+PAY_AMT6     0
+target       0
+dtype: int64
+
+```
+# Check unique values in columns
+print('SEX' + str(sorted(df['SEX'].unique())))
+print('EDUCATION' + str(sorted(df['EDUCATION'].unique())))
+print('MARRIAGE' + str(sorted(df['MARRIAGE'].unique())))
+print('PAY_1' + str(sorted(df['PAY_1'].unique())))
+print('target' + str(sorted(df['target'].unique())))
+```
+SEX[1, 2]
+EDUCATION[0, 1, 2, 3, 4, 5, 6]
+MARRIAGE[0, 1, 2, 3]
+PAY_1[-2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8]
+target[0, 1]
