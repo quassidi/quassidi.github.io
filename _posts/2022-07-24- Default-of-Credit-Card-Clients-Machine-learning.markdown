@@ -191,3 +191,45 @@ plt.show()
 
 <img src="https://i.imgur.com/OdhgOYD.jpg" style="margin-left: 5%" >
 
+```
+bins = [20,30,40,50,60,70,80]
+names = ['21-30','31-40','41-50','51-60','61-70','71-80']
+df['AGE_BIN'] = pd.cut(x=df.AGE, bins=bins, labels=names, right=True)
+
+age_cnt = df.AGE_BIN.value_counts()
+age_0 = (df.AGE_BIN[df['target'] == 0].value_counts())
+age_1 = (df.AGE_BIN[df['target'] == 1].value_counts())
+
+plt.subplots(figsize=(10,7))
+# sns.barplot(data=defaulters, x='AGE_BIN', y='LIMIT_BAL', hue='def_pay', ci=0)
+plt.bar(age_0.index, age_0.values, label='0')
+plt.bar(age_1.index, age_1.values, label='1')
+for x,y in zip(names,age_0):
+    plt.text(x,y,y,fontsize=12)
+for x,y in zip(names,age_1):
+    plt.text(x,y,y,fontsize=12)
+plt.xticks(fontsize=12)
+plt.yticks(fontsize=12)
+plt.title("Number of clients in each age group", fontsize=15)
+plt.legend(loc='upper right', fontsize=15)
+plt.show()
+```
+<img src="https://i.imgur.com/Cx6GZxd.jpg" style="margin-left: 5%" >
+
+### Exploratory data analysis
+
+```
+output = 'target'
+
+# Let's do a little EDA
+cols = [f for f in df.columns]
+cols.remove("ID")
+cols.remove("AGE_BIN")
+cols.remove(output)
+
+f = pd.melt( df, id_vars=output, value_vars=cols)
+g = sns.FacetGrid( f, hue=output, col="variable", col_wrap=5, sharex=False, sharey=False )
+g = g.map( sns.distplot, "value", kde=True)
+```
+
+<img src="https://i.imgur.com/zodaRa5.jpg" style="margin-left: 5%" >
