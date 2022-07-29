@@ -388,3 +388,34 @@ education_class_0 = df[(df["EDUCATION"] == 0)]
 education_class_0
 ```
 <img src="https://i.imgur.com/Kehy7bk.jpg" style="margin-left: 5%" >
+
+```
+# The quantitative vars:
+quant = ["LIMIT_BAL", "AGE"]
+
+# The qualitative but "Encoded" variables (ie most of them)
+qual_Enc = cols
+qual_Enc.remove("LIMIT_BAL")
+qual_Enc.remove("AGE")
+```
+
+```
+logged = []
+for ii in range(1,7):
+    qual_Enc.remove("PAY_AMT" + str( ii ))
+    df[ "log_PAY_AMT" + str( ii )]  = df["PAY_AMT"  + str( ii )].apply( lambda x: np.log1p(x) if (x>0) else 0 )
+    logged.append("log_PAY_AMT" + str( ii ) )
+
+for ii in range(1,7):
+    qual_Enc.remove("BILL_AMT" + str( ii ))
+    df[ "log_BILL_AMT" + str( ii )] = df["BILL_AMT" + str( ii )].apply( lambda x: np.log1p(x) if (x>0) else 0 )
+    logged.append("log_BILL_AMT" + str( ii ) )
+
+f = pd.melt( df, id_vars=output, value_vars=logged)
+g = sns.FacetGrid( f, hue=output, col="variable", col_wrap=3, sharex=False, sharey=False )
+g = g.map( sns.distplot, "value", kde=True)
+
+```
+
+<img src="https://i.imgur.com/gOfjDYq.jpg" style="margin-left: 5%" >
+
