@@ -232,7 +232,7 @@ g = sns.FacetGrid( f, hue=output, col="variable", col_wrap=5, sharex=False, shar
 g = g.map( sns.distplot, "value", kde=True)
 ```
 
-<img src="https://i.imgur.com/zodaRa5.jpg" style="margin-left: 5%" >
+<img src="https://i.imgur.com/ckMD5jm.jpg" style="margin-left: 5%" >
 
 
 ### Average credit limit and Age
@@ -263,3 +263,24 @@ plt.xlabel("Education", size=22, alpha=0.7)
 plt.show()
 ```
 <img src="https://i.imgur.com/P67PO69.jpg" style="margin-left: 5%" >
+
+
+## Chi-squared test
+
+A chi-square  or (χ2) statistic is a measure of the difference between the observed and expected frequencies of the outcomes of a set of events or variables. Chi-square is useful for analyzing such differences in categorical variables, especially those nominal in nature.
+
+Categorical variable (also called qualitative variable) is a variable that can take on one of a limited, and usually fixed, number of possible values, assigning each individual or other unit of observation to a particular group or nominal category on the basis of some qualitative property
+
+A nominal category or a nominal group is a group of objects or ideas that can be collectively grouped on the basis of a particular characteristic
+
+So understanding the above concepts i decided to explain the chi squared with variable SEX
+
+The first thing that we need is define the expected values and totalize them also the easiest way to do it is with a table 
+
+<img src="https://i.imgur.com/DcvpcUC.jpg" style="margin-left: 5%" >
+
+
+
+
+
+
