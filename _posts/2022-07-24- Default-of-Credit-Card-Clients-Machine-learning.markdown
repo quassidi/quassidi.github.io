@@ -387,4 +387,4 @@ The problem that we have with education variable is all target values are equal 
 education_class_0 = df[(df["EDUCATION"] == 0)]
 education_class_0
 ```
-<img src="https://i.imgur.com/undefined.jpg" style="margin-left: 5%" >
+<img src="https://i.imgur.com/Kehy7bk.jpg" style="margin-left: 5%" >
