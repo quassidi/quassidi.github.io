@@ -298,6 +298,93 @@ A p-value less than 0.05 is typically considered to be statistically significant
 <img src="https://i.imgur.com/BVSDXd7.jpg" style="margin-left: 5%" >
 
 
+Code
+```
+def ChiSquaredTestOfIndependence( df, inputVar, Outcome_Category ):
+    # Useful to have this wrapped in a function
+    # The ChiSquaredTest of Independence - 
+    # has a null hypothesis: the OutcomeCategory is independent of the inputVar
+    # So we create a test-statistic which is a measure of the difference between 
+    # "expected" i.e. what we WOULD observe if the OutcomeCategory WAS independent of the inputVar
+    # "observed" i.e. what the data actually shows
+    # the p-value returned is the probability of seeing this test-statistic if the null-hypothesis is true
+    Outcome_Category_Table = df.groupby( Outcome_Category )[ Outcome_Category ].count().values
+    # Outcome_Category_Table  is the sum between the different values that are in the column target we only have 0 and 1 so the total  of both are 
+    #target
+    #0    23364
+    #1     6636
+    Outcome_Category_Ratios = Outcome_Category_Table / sum( Outcome_Category_Table )
+    # Outcome_Category_Ratios is the sum of the values that are in the column target (30000) then divided into the Outcome_Category_Table
+    #target ------ Outcome_Category_Ratios
+    #0    23364   | 0.7788
+    #1     6636   | 0.2212
+    possibleVals = df[inputVar].unique()
+    # inputVar = SEX
+    # possibleVals = 1 and 2
+    observed = []
+    expected = []
+    for possible in possibleVals:
+        countsInCategories = df[ df[ inputVar ] == possible ].groupby( Outcome_Category )[Outcome_Category].count().values
+        # we have two categories in the column sex we are going to count how many are 0 or 1 for each category
+        # Category 1
+        # 0    9015
+        # 1    2873
+        # Category 2
+        # 0    14349
+        # 1     3763
+        
+        if( len(countsInCategories) != len( Outcome_Category_Ratios ) ):
+            # The len() function returns the number of items in an object.
+            # in each category we have 2 values and Outcome_Category_Ratios (target) we have 2 values
+            print("Error! The class " + str( possible) +" of \'" + inputVar + "\' does not contain all values of \'" + Outcome_Category + "\'" )
+            return
+        elif( min(countsInCategories) < 5 ):
+            # The min() function returns the item with the lowest value, or the item with the lowest value in an iterable.
+            print("Chi Squared Test needs at least 5 observations in each cell!")
+            print( inputVar + "=" + str(possible) + " has insufficient data")
+            print( countsInCategories )
+            return
+        else:
+            observed.append( countsInCategories )   
+            expected.append( Outcome_Category_Ratios * len( df[df[ inputVar ] == possible ]))
+            #we have the outcome ratios of the total of the values  (default or not default) divide by the total of target 23364 / 30000 or 6636 / 30000
+            #then we multiply the ratios for the total of men or women (men = 11888 | women = 18112)
+    observed = np.array( observed )
+    expected = np.array( expected )
+    chi_squared_stat = ((observed - expected)**2 / expected).sum().sum()
+    # chi squared is the sum  of all equations of observed - expected raise to 2 and divided by expected
+    #Degrees of freedom
+    degOfF = (observed.shape[0] - 1 ) *(observed.shape[1] - 1 ) 
+    #Degrees of freedom refers to the maximum number of logically independent values, which are values that have the freedom to vary, in the data sample.
+    #crit = stats.chi2.ppf(q = 0.95,df = degOfF) 
+    p_value = 1 - stats.chi2.cdf(x=chi_squared_stat, df=degOfF)
+    print("Calculated test-statistic is %.2f" % chi_squared_stat )
+    print("If " + Outcome_Category + " is indep of " + inputVar + ", this has prob %.2e of occurring" % p_value )
+    #t_stat, p_val, doF, expArray = stats.chi2_contingency(observed= observed, correction=False)
+    #print("Using built-in stats test: outputs")
+    #print("test-statistic=%.2f, p-value=%.2f, degsOfFreedom=%d" % ( t_stat, p_val, doF ) )
+    
 
+```
 
+```
+ChiSquaredTestOfIndependence( df, "SEX", output )
+```
 
+Calculated test-statistic is 47.91
+If target is indep of SEX, this has prob 4.47e-12 of occurring
+
+```
+# Ok. So "default" is not independent of "SEX".
+ChiSquaredTestOfIndependence( df, "EDUCATION", output )   
+```
+
+Error! The class 0 of 'EDUCATION' does not contain all values of 'target'
+
+The problem that we have with education variable is all target values are equal to 0
+
+```
+education_class_0 = df[(df["EDUCATION"] == 0)]
+education_class_0
+```
+<img src="https://i.imgur.com/undefined.jpg" style="margin-left: 5%" >
