@@ -279,6 +279,23 @@ The first thing that we need is define the expected values and totalize them als
 
 <img src="https://i.imgur.com/DcvpcUC.jpg" style="margin-left: 5%" >
 
+Then we need to calculated the expected value with the division of the totals of default or no default with total of each sex 
+
+<img src="https://i.imgur.com/S0linL0.jpg" style="margin-left: 5%" >
+
+Then the chi squared is the sum  of all equations of observed - expected raise to 2 and divided by expected
+
+Degrees of freedom
+
+Refers to the maximum number of logically independent values, which are values that have the freedom to vary, in the data sample.
+so it is the (sum of rows -1) * (sum of columns -1)
+
+
+Is a 0.05 P-Value Significant?
+
+A p-value less than 0.05 is typically considered to be statistically significant, in which case the null hypothesis should be rejected. A p-value greater than 0.05 means that deviation from the null hypothesis is not statistically significant, and the null hypothesis is not rejected.
+
+<img src="https://i.imgur.com/BVSDXd7.jpg" style="margin-left: 5%" >
 
 
 
