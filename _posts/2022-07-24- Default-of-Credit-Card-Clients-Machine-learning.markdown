@@ -419,3 +419,100 @@ g = g.map( sns.distplot, "value", kde=True)
 
 <img src="https://i.imgur.com/gOfjDYq.jpg" style="margin-left: 5%" >
 
+```
+features = quant + qual_Enc + logged   
+X = df[features].values    
+y = df[ output ].values
+
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split( X, y, test_size=0.2)
+
+from sklearn.preprocessing import StandardScaler
+scX = StandardScaler()
+X_train = scX.fit_transform( X_train )
+X_test = scX.transform( X_test )
+
+# We'll need some metrics to evaluate our models
+from sklearn.metrics import confusion_matrix
+from sklearn.model_selection import cross_val_score
+```
+```
+#-------------- 
+# Random Forest 
+#--------------
+from sklearn.ensemble import RandomForestClassifier
+classifier = RandomForestClassifier(n_estimators=10)
+classifier.fit( X_train, y_train )
+y_pred = classifier.predict( X_test )
+
+cm = confusion_matrix( y_test, y_pred )
+print("Accuracy on Test Set for RandomForest = %.2f" % ((cm[0,0] + cm[1,1] )/len(X_test)))
+scoresRF = cross_val_score( classifier, X_train, y_train, cv=10)
+print("Mean RandomForest CrossVal Accuracy on Train Set %.2f, with std=%.2f" % (scoresRF.mean(), scoresRF.std() ))
+
+#-------------- 
+# kernel SVM 
+#--------------
+from sklearn.svm import SVC
+classifier1 = SVC(kernel="rbf")
+classifier1.fit( X_train, y_train )
+y_pred = classifier1.predict( X_test )
+
+cm = confusion_matrix( y_test, y_pred )
+print("Accuracy on Test Set for kernel-SVM = %.2f" % ((cm[0,0] + cm[1,1] )/len(X_test)))
+scoresSVC = cross_val_score( classifier1, X_train, y_train, cv=10)
+print("Mean kernel-SVM CrossVal Accuracy on Train Set %.2f, with std=%.2f" % (scoresSVC.mean(), scoresSVC.std() ))
+```
+
+Accuracy on Test Set for RandomForest = 0.81
+Mean RandomForest CrossVal Accuracy on Train Set 0.81, with std=0.00
+Accuracy on Test Set for kernel-SVM = 0.83
+Mean kernel-SVM CrossVal Accuracy on Train Set 0.82, with std=0.00
+
+We'll check some of the other classifiers - but we don't expect they will do better
+
+```
+#-------------- 
+# Logistic Regression 
+#--------------
+from sklearn.linear_model import LogisticRegression
+classifier2 = LogisticRegression()
+classifier2.fit( X_train, y_train )
+y_pred = classifier2.predict( X_test )
+
+cm = confusion_matrix( y_test, y_pred )
+print("Accuracy on Test Set for LogReg = %.2f" % ((cm[0,0] + cm[1,1] )/len(X_test)))
+scoresLR = cross_val_score( classifier2, X_train, y_train, cv=10)
+print("Mean LogReg CrossVal Accuracy on Train Set %.2f, with std=%.2f" % (scoresLR.mean(), scoresLR.std() ))
+
+#-------------- 
+# Naive Bayes 
+#--------------
+from sklearn.naive_bayes import GaussianNB
+classifier3 = GaussianNB()
+classifier3.fit( X_train, y_train )
+y_pred = classifier3.predict( X_test )
+cm = confusion_matrix( y_test, y_pred )
+print("Accuracy on Test Set for NBClassifier = %.2f" % ((cm[0,0] + cm[1,1] )/len(X_test)))
+scoresNB = cross_val_score( classifier3, X_train, y_train, cv=10)
+print("Mean NaiveBayes CrossVal Accuracy on Train Set %.2f, with std=%.2f" % (scoresNB.mean(), scoresNB.std() ))
+
+#-------------- 
+# K-NEIGHBOURS 
+#--------------
+from sklearn.neighbors import KNeighborsClassifier
+classifier4 = KNeighborsClassifier(n_neighbors=5)
+classifier4.fit( X_train, y_train )
+y_pred = classifier4.predict( X_test )
+cm = confusion_matrix( y_test, y_pred )
+print("Accuracy on Test Set for KNeighborsClassifier = %.2f" % ((cm[0,0] + cm[1,1] )/len(X_test)))
+scoresKN = cross_val_score( classifier3, X_train, y_train, cv=10)
+print("Mean KN CrossVal Accuracy on Train Set Set %.2f, with std=%.2f" % (scoresKN.mean(), scoresKN.std() ))
+```
+
+Accuracy on Test Set for LogReg = 0.81
+Mean LogReg CrossVal Accuracy on Train Set 0.81, with std=0.01
+Accuracy on Test Set for NBClassifier = 0.77
+Mean NaiveBayes CrossVal Accuracy on Train Set 0.76, with std=0.01
+Accuracy on Test Set for KNeighborsClassifier = 0.80
+Mean KN CrossVal Accuracy on Train Set Set 0.76, with std=0.01
