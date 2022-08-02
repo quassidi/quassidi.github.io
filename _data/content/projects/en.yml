@@ -23,7 +23,7 @@ page_data:
       project_excerpt: "Pandas"
       img: ":twitch.jpg"
       img_title: "img title1"
-      date: "2021-03-13"
+      date: "2022-03-13"
       post: |
         # yyj_project
         This is a daily Report that i made for the streamer [Jinnytty](https://www.twitch.tv/jinnytty)
@@ -41,7 +41,7 @@ page_data:
       project_excerpt: "Tableau"
       img: "https://i.imgur.com/GiAUJkr.jpg"
       img_title: "Tableau_logo"
-      date: "2021-05-5"
+      date: "2022-05-5"
       post: |
         # Tableau Superstore Dashboard
         This is a Dashboard that i made from the database superstore
@@ -51,6 +51,34 @@ page_data:
         ### SuperStore Dashboard
 
         ![Dashboard_tableau](https://i.imgur.com/0q255KA.png)
+    # example
+    - type: id_pandas
+      project_name: "Dashboard on Tableau"
+      project_excerpt: "Tableau"
+      img: ":twitch.jpg"
+      img_title: "Tableau_logo"
+      date: "2022-05-5"
+      post: |
+        # Twitch Chat Analytics with sentiment analysis 
+        For this project i used some linux command tools for the data cleaning also pandas and textblob for the sentiment analysis 
+
+        The link for actual project [link](https://quassidi.github.io/posts/2022-07-03-Twitch-Chat-Analytics-Analyzing-jinnyttys-streams)
+        
+    # example
+    - type: id_pandas
+      project_name: "Dashboard on Tableau"
+      project_excerpt: "Tableau"
+      img: "https://www.kaggle.com/static/images/site-logo.svg"
+      img_title: "Tableau_logo"
+      date: "2022-02-9"
+      post: |
+        # Bellabeat Case Study R
+
+        Context
+        This case of study is from the course google data analytics I'm going to develop the analysis with the Six Data Analysis Phases
+
+        The link for actual project [Bellabeat Case Study R](https://www.kaggle.com/code/quarkdaniel/bellabeat-case-study-r)
+        
 
            
 
