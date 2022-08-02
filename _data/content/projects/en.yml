@@ -17,24 +17,18 @@ page_data:
       color: "gray"
 
   list:
-    # example
+      # example
     - type: id_pandas
-      project_name: "Daily Twitch Chat Report"
+      project_name: "Twitch Chat Analytics with sentiment analysis"
       project_excerpt: "Pandas"
       img: ":twitch.jpg"
-      img_title: "img title1"
-      date: "2022-03-13"
+      img_title: "Tableau_logo"
+      date: "2022-05-5"
       post: |
-        # yyj_project
-        This is a daily Report that i made for the streamer [Jinnytty](https://www.twitch.tv/jinnytty)
+        # Twitch Chat Analytics with sentiment analysis 
+        For this project i used some linux command tools for the data cleaning also pandas and textblob for the sentiment analysis 
 
-        For this project i used different tools like bash scripting and pandas 
-
-        this is the link for the github repository [yyj_project](https://github.com/quassidi/yyj_project)
-        
-        ### An example of the report
-
-        ![such a lovely place](https://cdn.discordapp.com/attachments/921280506795032606/962530492605931560/report-1.png)
+        The link for actual project [link](https://quassidi.github.io/posts/2022-07-03-Twitch-Chat-Analytics-Analyzing-jinnyttys-streams)
     # example
     - type: id_pandas
       project_name: "Dashboard on Tableau"
@@ -53,21 +47,26 @@ page_data:
         ![Dashboard_tableau](https://i.imgur.com/0q255KA.png)
     # example
     - type: id_pandas
-      project_name: "Dashboard on Tableau"
-      project_excerpt: "Tableau"
+      project_name: "Daily Twitch Chat Report"
+      project_excerpt: "Pandas"
       img: ":twitch.jpg"
-      img_title: "Tableau_logo"
-      date: "2022-05-5"
+      img_title: "img title1"
+      date: "2022-03-13"
       post: |
-        # Twitch Chat Analytics with sentiment analysis 
-        For this project i used some linux command tools for the data cleaning also pandas and textblob for the sentiment analysis 
+        # yyj_project
+        This is a daily Report that i made for the streamer [Jinnytty](https://www.twitch.tv/jinnytty)
 
-        The link for actual project [link](https://quassidi.github.io/posts/2022-07-03-Twitch-Chat-Analytics-Analyzing-jinnyttys-streams)
+        For this project i used different tools like bash scripting and pandas 
+
+        this is the link for the github repository [yyj_project](https://github.com/quassidi/yyj_project)
         
+        ### An example of the report
+
+        ![such a lovely place](https://cdn.discordapp.com/attachments/921280506795032606/962530492605931560/report-1.png)   
     # example
     - type: id_pandas
       project_name: "Dashboard on Tableau"
-      project_excerpt: "Tableau"
+      project_excerpt: "Kaggle"
       img: "https://www.kaggle.com/static/images/site-logo.svg"
       img_title: "Tableau_logo"
       date: "2022-02-9"
