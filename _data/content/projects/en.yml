@@ -17,6 +17,18 @@ page_data:
       color: "gray"
 
   list:
+        # example
+    - type: id_pandas
+      project_name: "Default of Credit Card Clients Analytics and Machine Learning"
+      project_excerpt: "Pandas"
+      img: ":twitch.jpg"
+      img_title: "Tableau_logo"
+      date: "2022-07-5"
+      post: |
+        # Default of Credit Card Clients Analytics and machine learning
+        Analysis data with pandas and some visualizations and last but not least i use sklearn for develop of the random forest and logistic regression
+
+        The link for actual project [link](https://quassidi.github.io/posts/2022-07-24-%20Default-of-Credit-Card-Clients-Machine-learning)
       # example
     - type: id_pandas
       project_name: "Twitch Chat Analytics with sentiment analysis"
