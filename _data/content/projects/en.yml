@@ -24,7 +24,7 @@ page_data:
     - type: id_pandas
       project_name: "Default of Credit Card Clients Analytics and Machine Learning"
       project_excerpt: "Pandas"
-      img: ":https://storage.googleapis.com/kaggle-datasets-images/306/666/d68d599bfe6995fa5772df1e82c4e83c/dataset-cover.jpg"
+      img: ":https://miro.medium.com/max/1400/1*jnMmoDKtrgt0DsAXt5JEfA.png"
       img_title: "Tableau_logo"
       date: "2022-07-5"
       post: |
