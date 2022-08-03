@@ -18,6 +18,9 @@ page_data:
     - title: "Tableau"
       type: id_tableau
       color: "blue"
+    - title: "R"
+      type: id_R
+      color: "green"
 
   list:
         # example
@@ -79,7 +82,7 @@ page_data:
 
         ![such a lovely place](https://cdn.discordapp.com/attachments/921280506795032606/962530492605931560/report-1.png)   
     # example
-    - type: id_pandas
+    - type: id_R
       project_name: "Dashboard on Tableau"
       project_excerpt: "Kaggle"
       img: "https://www.kaggle.com/static/images/site-logo.svg"
