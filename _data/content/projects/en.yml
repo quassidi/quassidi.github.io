@@ -23,11 +23,10 @@ page_data:
       color: "green"
 
   list:
-        # example
     - type: id_pandas
       project_name: "Default of Credit Card Clients Analytics and Machine Learning"
       project_excerpt: "Pandas"
-      img: ":https://i.imgur.com/ju299Kl.jpg"
+      img: "https://i.imgur.com/ju299Kl.jpg"
       img_title: "Tableau_logo"
       date: "2022-07-5"
       post: |
@@ -35,7 +34,6 @@ page_data:
         Analysis data with pandas and some visualizations and last but not least i use sklearn for develop of the random forest and logistic regression
 
         The link for actual project [link](https://quassidi.github.io/posts/2022-07-24-%20Default-of-Credit-Card-Clients-Machine-learning)
-      # example
     - type: id_pandas
       project_name: "Twitch Chat Analytics with sentiment analysis"
       project_excerpt: "Pandas"
@@ -47,7 +45,6 @@ page_data:
         For this project i used some linux command tools for the data cleaning also pandas and textblob for the sentiment analysis 
 
         The link for actual project [link](https://quassidi.github.io/posts/2022-07-03-Twitch-Chat-Analytics-Analyzing-jinnyttys-streams)
-    # example
     - type: id_pandas
       project_name: "Dashboard on Tableau"
       project_excerpt: "Tableau"
@@ -63,7 +60,6 @@ page_data:
         ### SuperStore Dashboard
 
         ![Dashboard_tableau](https://i.imgur.com/0q255KA.png)
-    # example
     - type: id_tableau
       project_name: "Daily Twitch Chat Report"
       project_excerpt: "Pandas"
@@ -81,7 +77,6 @@ page_data:
         ### An example of the report
 
         ![such a lovely place](https://cdn.discordapp.com/attachments/921280506795032606/962530492605931560/report-1.png)   
-    # example
     - type: id_R
       project_name: "Dashboard on Tableau"
       project_excerpt: "Kaggle"
