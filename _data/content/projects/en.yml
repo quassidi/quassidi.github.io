@@ -67,6 +67,12 @@ page_data:
 
         ![Dashboard_tableau](https://i.imgur.com/xnt4fxw.png)
 
+        ### Third Dashboard
+
+        This is the link for the tableau [Dashboard](https://public.tableau.com/views/superstore_16519092554010/Dashboard3?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link)
+
+        ![Dashboard_tableau](https://i.imgur.com/R87ckgm.png)
+
     - type: id_pandas
       project_name: "Daily Twitch Chat Report"
       project_excerpt: "Pandas"
