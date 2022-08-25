@@ -46,7 +46,7 @@ page_data:
 
         The link for actual project [link](https://quassidi.github.io/posts/2022-07-03-Twitch-Chat-Analytics-Analyzing-jinnyttys-streams)
     - type: id_pandas
-      project_name: "Dashboard on Tableau"
+      project_name: "Tableau Superstore Dashboards"
       project_excerpt: "Tableau"
       img: "https://i.imgur.com/GiAUJkr.jpg"
       img_title: "Tableau_logo"
