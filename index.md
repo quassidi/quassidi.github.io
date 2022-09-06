@@ -51,3 +51,5 @@ In 2020 with the pandemic i had some jobs as a web developer nothing fancy i dev
 In 2021 i had the opportunity for a student scholarship from [MICITT](https://becasmicitt.com/) to study Cyber Security 
 
 In 2022 i have been improving my skills as a data analyst doing projects and I want to use those as experience for a future job
+
+If you want to contact me on the right are all my socials and also this is my email danil506rm@yahoo.com
