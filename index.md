@@ -52,4 +52,4 @@ In 2021 i had the opportunity for a student scholarship from [MICITT](https://be
 
 In 2022 i have been improving my skills as a data analyst doing projects and I want to use those as experience for a future job
 
-If you want to contact me on the right are all my socials and also this is my email danil506rm@yahoo.com
+If you want to contact me on the left are all my socials and also this is my email danil506rm@yahoo.com
