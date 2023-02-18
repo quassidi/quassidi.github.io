@@ -38,7 +38,7 @@ img: ":home-heading.jpg"
 ## Hello 
 My name is Daniel and I am from Costa Rica.
 
-Currently, I have been developing my skills as a data analyst also I like cyber security. 
+Currently, I have been working as a Data Analyst for Citihroup 
 
 You will find here how I start my projects and a step by step until I finish them.
 
